@@ -1,0 +1,19 @@
+version: '2'
+services:
+  kairosdb:
+    build: kairosdb
+    volumes:
+      - kairosdb-h2db:/tmp/kairosdb
+    ports:
+      - "14480:14480"
+
+  grafana:
+    build: grafana
+    volumes:
+       - grafana-data:/tmp/grafana
+    ports:
+       - "3000:3000"
+
+volumes:
+    kairosdb-h2db:
+    grafana-data:
