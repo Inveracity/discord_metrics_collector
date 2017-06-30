@@ -3,9 +3,9 @@ import json
 import time
 import random
 
-def send_to_kairosdb(data):
+def send_to_kairosdb(data, timestamp):
     ''' send results to kairosdb '''
-    timestamp         = int(time.time()*1000)
+    #timestamp         = int(time.time()*1000)
     data['timestamp'] = timestamp
     kairosdb_server   = 'http://localhost:14480/api/v1/datapoints'
     headers           = {'Content-Type': 'application/json'}
@@ -13,7 +13,8 @@ def send_to_kairosdb(data):
 
     return response.status_code
 
-def stats_collector(message):
+
+def stats_collector(message, timestamp):
     ''' takes discord message object and sends data to kairosdb '''
     stats = []
 
@@ -40,19 +41,19 @@ def stats_collector(message):
     })
 
     for stat in stats:
-        send_to_kairosdb(stat)
+        send_to_kairosdb(stat, timestamp)
 
     return True
 
+
 if __name__ == '__main__':
-    while 1:
+    generate_5minute_time_data = [int(time.time()*1000)-x*1000 for x in range(300, 0, -1)]
+    for timestamp in generate_5minute_time_data:
         random.seed = random.randint(1000000, 1001001)
         message = {}
         message['server']  = 'mydiscordserver'
         message['channel'] = random.choice(['general', 'random', 'catgifs'])
-        message['author']  = random.choice(['Luke', 'Leah', 'Vader', 'Chewbacca', 'Solo'])
+        message['author']  = random.choice(['Luke', 'Leia', 'Vader', 'Chewbacca', 'Solo', 'Yoda','Fett', 'Kenobi', 'R2D2', 'C-3PO', 'Jabba', 'Lando', 'Ackbar', 'Greedo'])
         message['content'] = random.randint(1, 150)
-        stats_collector(message)
-        print message
-        time.sleep(0.2)
-
+        stats_collector(message, timestamp)
+        print(message)
