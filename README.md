@@ -4,11 +4,13 @@
 
 This project builds 2 docker containers one with kairosdb 1.1.3 and one with grafana 4.3.2
 
-![grafana](/images/image.png)
+The aim is to track usage metrics of your discord community to understand your community better, which channels see more action and which users are more talkative than others.
 
 goals:
 * gain usage insights into your discord community
 * easy to deploy with minimal configuration
+
+![grafana](/images/image.png)
 
 ## prerequisites:
 * docker-ce >= 17.03
@@ -39,11 +41,13 @@ Navigate to http://localhost:3000
 1. login with admin/admin
 
 2. add a datasource
+
 ![grafana](/images/datasource.jpg)
 
 If you look in the Vagrantfile, you'll notice the vm has the IP address of 192.168.56.2, in your case the IP address to enter is the IP of the host the docker containers are running on.
 
 3. Upload the dashboard json file
+
 ![grafana](/images/uploadjson.jpg)
 
 Click the upload button and find the Discord_starwars.json file
@@ -52,9 +56,7 @@ Click the upload button and find the Discord_starwars.json file
 
 give the dashboard a name and select the `kairosdb` datasource
 
-and finally click Import.
-
-and now you should have a dashboard that you can customise to your liking.
+Now you should have a dashboard that you can customise to your liking!
 
 # Todo:
 * add grafana configuration file to change login easily
