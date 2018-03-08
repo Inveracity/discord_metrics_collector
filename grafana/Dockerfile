@@ -1,6 +1,6 @@
 FROM mhart/alpine-node:6
 
-ENV GRAFANA_VERSION=4.3.2
+ENV GRAFANA_VERSION=5.0.1
 
 RUN apk add --no-cache openssl
 RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub

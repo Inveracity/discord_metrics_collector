@@ -13,8 +13,8 @@ goals:
 ![grafana](/images/image.png)
 
 ## prerequisites:
-* docker-ce >= 17.03
-* docker-compose
+* docker-ce >= 17.12.1-ce
+* docker-compose >= 1.18.0
 
 
 ```bash
@@ -24,11 +24,11 @@ git clone https://github.com/Inveracity/discord_metrics_collector.git
 # change to the directory
 cd discord_metrics_collector/
 
-# build the containers
+# build the images
 docker-compose build
 
 # start the containers
-docker-compose start
+docker-compose up -d
 
 # put some testing data in the kairosdb
 python bot/generate_test_data.py
